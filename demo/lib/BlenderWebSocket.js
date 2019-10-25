@@ -51,6 +51,12 @@ class BlenderWebSocket {
 					emit('time', self.time);
 					break;
 
+				case 'scene':
+					var currentTime = data[2]["frame"] / data[2]["fps"];
+					self.time = currentTime;
+					emit('time', self.time);
+					break;
+
 				default:
 					emit('unknownMessage', data);
 					break;
