@@ -1,6 +1,8 @@
 // Leon Denise 
 // Cookie Party Invitro 2019
 
+//var url_module = require('url');
+
 window.onload = function () {
 
 var button = document.getElementById('button');
@@ -14,8 +16,16 @@ loadFiles('shader/',['screen.vert','blur.frag','text.vert','screen.frag','geomet
 // animation data
 loadFiles('animation/',['animation.json'], function(animationData) {
 
+var urlParams = new URLSearchParams(location.search);
+
+console.log(urlParams.has('type'));
+console.log(urlParams.get('act'));
+
+var eventType = urlParams.get('type');
+var actName = urlParams.get('act');
+
 // texts
-var textList = ['cookie.obj','festival.obj','date.obj','landy.obj','shader.obj','beamer.obj','play.obj','concert.obj','workshop.obj','dj.obj','lazer.obj','minitel.obj','credits.obj'];
+var textList = ['cookie.obj','up-next-jingle.obj',eventType + '-jingle.obj',actName + '-jingle.obj','date.obj','landy.obj','shader.obj','beamer.obj','play.obj','concert.obj','workshop.obj','dj.obj','lazer.obj','minitel.obj','credits.obj'];
 loadFiles('animation/',textList, function(meshes) {
 
 	const gl = document.getElementById('canvas').getContext('webgl');
